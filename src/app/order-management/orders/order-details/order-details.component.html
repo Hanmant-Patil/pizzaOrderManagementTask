@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <div class="col-sm-12 col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h3> Order Details </h3>
+      </div>
+      <div *ngIf="(order | json) != '{}'" class="card-body">
+        <div class="form-group"> 
+          <label class="control-label">Customer Name : </label> {{ order.customerName }} 
+        </div>
+        <div class="form-group"> 
+          <label class="control-label">Items : </label>
+          <table class="table">
+            <tr>
+              <th>Item Name</th> <th>Price</th>
+            </tr>
+            <tr *ngFor="let item of order.items">
+              <td>{{ item.name }} </td> 
+              <td>{{ item.price }} </td></tr>
+          </table>
+        </div>
+        <div class="form-group"> 
+          <label class="control-label">Total Price : </label> {{ order.totalOrderAmount }} 
+        </div>
+        <div class="form-group"> 
+          <label class="control-label">Delivery Address : </label> {{ order.deliveryAddress }} 
+        </div>
+      </div>
+
+      <div class="card-footer cls_alignright">
+        <button type="button" class="btn btn-secondary cls_pointer" title="Orders" (click)="onCancel()">
+          Cancel
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
