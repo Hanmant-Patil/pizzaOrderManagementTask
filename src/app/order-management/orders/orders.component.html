@@ -5,48 +5,46 @@
         <h3> Orders </h3>
       </div>
       <div class="card-body">
-          <ngx-datatable #orderDataTable class="material fullscreen cls_wordwrap tblhght" [headerHeight]="50"
-            [footerHeight]="50" [rowHeight]="'auto'" [columnMode]="'force'" [limit]="10" [scrollbarH]="'true'"
-            [rows]="rows" [sorts]="[{ prop: 'customerName', dir: 'asc'}]" >
+        <ngx-datatable #orderDataTable class="material fullscreen" [headerHeight]="50"
+          [footerHeight]="50" [rowHeight]="'auto'" [columnMode]="'force'" [limit]="10" [scrollbarH]="'true'"
+          [rows]="rows" [sorts]="[{ prop: 'customerName', dir: 'asc'}]" >
 
-            <ngx-datatable-column prop="customerName" [width]='80' [draggable]="false" [resizeable]="false">
-              <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-                {{ value }}
-              </ng-template>
-            </ngx-datatable-column>
+          <ngx-datatable-column prop="customerName" [width]='80' [draggable]="false" [resizeable]="false">
+            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+              {{ value }}
+            </ng-template>
+          </ngx-datatable-column>
 
-            <ngx-datatable-column prop="itemsOrderedCount" name="No Of Orders" [width]='80' [draggable]="false" [resizeable]="false">
-              <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-                {{ value }}
-              </ng-template>
-            </ngx-datatable-column>
+          <ngx-datatable-column prop="itemsOrderedCount" name="No Of Orders" [width]='80' [draggable]="false" [resizeable]="false">
+            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+              {{ value }}
+            </ng-template>
+          </ngx-datatable-column>
 
-            <ngx-datatable-column prop="totalOrderAmount" name="Total Order Amount" [width]='80' [draggable]="false" [resizeable]="false">
-              <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-                {{ value }}
-              </ng-template>
-            </ngx-datatable-column>
+          <ngx-datatable-column prop="totalOrderAmount" name="Total Order Amount" [width]='80' [draggable]="false" [resizeable]="false">
+            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+              {{ value }}
+            </ng-template>
+          </ngx-datatable-column>
 
-            <ngx-datatable-column prop="orderStatus" name="Order Status" [width]='100' [draggable]="false" [resizeable]="false">
-              <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" le t-row="row" let-value="value">
-                {{ value }}
-              </ng-template>
-            </ngx-datatable-column>
+          <ngx-datatable-column prop="orderStatus" name="Order Status" [width]='100' [draggable]="false" [resizeable]="false">
+            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" le t-row="row" let-value="value">
+              {{ value }}
+            </ng-template>
+          </ngx-datatable-column>
 
-            <ngx-datatable-column name="Action" [width]="80" [sortable]="false" [draggable]="false" [resizeable]="false">
-              <ng-template ngx-datatable-cell-template let-row="row" let-value="value">
-                <button title="View" class="cls_pointer" (click)="onOrderDetails(row)">
-                  Details      
-                </button> 
-                &nbsp;
-                <button [title]="row.orderStatus == 'Ready to serve' ? 'Order Served' : 'Change Status'" [disabled]="row.orderStatus == 'Ready to serve'" [class.disabled]="row.orderStatus == 'Ready to serve'" class="cls_pointer" (click)="onChangeOrderStatus(row)">
-                  Change Status   {{ value }}
-                </button> 
-              </ng-template>
-            </ngx-datatable-column>
-          </ngx-datatable>
-        
-
+          <ngx-datatable-column name="Action" [width]="80" [sortable]="false" [draggable]="false" [resizeable]="false">
+            <ng-template ngx-datatable-cell-template let-row="row" let-value="value">
+              <button title="View" class="cls_pointer" (click)="onOrderDetails(row)">
+                Details      
+              </button> 
+              &nbsp;
+              <button [title]="row.orderStatus == 'Ready to serve' ? 'Order Served' : 'Change Status'" [disabled]="row.orderStatus == 'Ready to serve'" [class.disabled]="row.orderStatus == 'Ready to serve'" class="cls_pointer" (click)="onChangeOrderStatus(row)">
+                Change Status   {{ value }}
+              </button> 
+            </ng-template>
+          </ngx-datatable-column>
+        </ngx-datatable>
       </div>
     </div>
   </div>

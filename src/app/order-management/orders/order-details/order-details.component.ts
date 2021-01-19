@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
+
 import { OrdersService } from '../../orders.service';
 import { Order } from '../order';
-
 @Component({
   selector: 'app-order-details',
   templateUrl: './order-details.component.html',
@@ -24,15 +24,16 @@ export class OrderDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.orders = this.ordersService.getOrders();
+    this.orders = this.ordersService.getOrders(); // get order list
+    // find out order details of detailed customer
     const order = this.orders.filter(element => {
       return element.customerId == this.customerId;
     });
 
-    if(order.length) {
+    if(order.length) {  // if customer persent of given custumerid
       this.order = order[0];
-    } else {
-      this.onCancel();
+    } else {  
+      this.onCancel();  // back to order list
     }    
   }
 

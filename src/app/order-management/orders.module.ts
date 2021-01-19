@@ -14,8 +14,7 @@ import { OrderDetailsComponent } from './orders/order-details/order-details.comp
   imports: [
     CommonModule,
     OrdersRoutingModule,
-    NgxDatatableModule,
-    
+    NgxDatatableModule    
   ]
 })
 export class OrdersModule { }

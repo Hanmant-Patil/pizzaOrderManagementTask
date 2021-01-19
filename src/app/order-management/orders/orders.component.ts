@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { OrdersService } from '../orders.service';
-import { Order } from './order';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
+import { OrdersService } from '../orders.service';
+import { Order } from './order';
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
@@ -24,10 +24,11 @@ export class OrdersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.orders = this.ordersService.getOrders();
+    this.orders = this.ordersService.getOrders();  // get orders list from order service
     this.rows = this.orders;
   }
 
+  // naviagte to order details page
   public onOrderDetails(order) {
     this.router.navigate([`orders/details/${order.customerId}`]);
   }
@@ -42,15 +43,14 @@ export class OrdersComponent implements OnInit {
             break;
           case "Preparing":
             element.orderStatus = "Ready to serve";
-             this.toastr.success('Order Status Changes');
+            this.toastr.success('Order Status Changes');
             break;         
           default:
         }
       }
       return element;
     });
-    this.rows = this.orders = orders;    
-   
+    this.rows = this.orders = orders; 
   }
 
 }
